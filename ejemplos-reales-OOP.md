@@ -5,10 +5,10 @@ Archivo: modelo_usuario.py
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.orm import declarative_base, sessionmaker
 
-# 1️⃣ Crear clase base
+# 1. Crear clase base
 Base = declarative_base()
 
-# 2️⃣ Definir clase como modelo de tabla
+# 2. Definir clase como modelo de tabla
 class Usuario(Base):
     __tablename__ = "usuarios"
 
@@ -19,20 +19,20 @@ class Usuario(Base):
     def __repr__(self):
         return f"<Usuario(nombre={self.nombre}, email={self.email})>"
 
-# 3️⃣ Crear motor de conexión (objeto Engine)
+# 3. Crear motor de conexión (objeto Engine)
 engine = create_engine("sqlite:///ejemplo.db")
 
-# 4️⃣ Crear tablas
+# 4. Crear tablas
 Base.metadata.create_all(engine)
 
-# 5️⃣ Crear sesión (objeto Session)
+# 5. Crear sesión (objeto Session)
 Session = sessionmaker(bind=engine)
 session = Session()
 
-# 6️⃣ Crear objeto Usuario
+# 6. Crear objeto Usuario
 nuevo_usuario = Usuario(nombre="David", email="david@email.com")
 
-# 7️⃣ Guardarlo en la base de datos
+# 7. Guardarlo en la base de datos
 session.add(nuevo_usuario)
 session.commit()
 
@@ -95,23 +95,23 @@ public class SocketClient {
         int puerto = 5000;
 
         try {
-            // 1️⃣ Crear objeto Socket
+            // 1. Crear objeto Socket
             Socket socket = new Socket(host, puerto);
 
-            // 2️⃣ Crear objetos para enviar y recibir datos
+            // 2. Crear objetos para enviar y recibir datos
             PrintWriter salida = new PrintWriter(socket.getOutputStream(), true);
             BufferedReader entrada = new BufferedReader(
                     new InputStreamReader(socket.getInputStream())
             );
 
-            // 3️⃣ Enviar mensaje
+            // 3. Enviar mensaje
             salida.println("Hola servidor");
 
-            // 4️⃣ Recibir respuesta
+            // 4. Recibir respuesta
             String respuesta = entrada.readLine();
             System.out.println("Servidor dice: " + respuesta);
 
-            // 5️⃣ Cerrar conexión
+            // 5. Cerrar conexión
             socket.close();
 
         } catch (Exception e) {
@@ -145,6 +145,6 @@ Es otro objeto que encapsula la escritura de datos.
 
 Objeto que encapsula lectura eficiente de datos.
 
-👉 Java modela la red completamente como objetos que representan conexiones y flujos.
+> Java modela la red completamente como objetos que representan conexiones y flujos.
 
 Eso es POO aplicada a infraestructura.
